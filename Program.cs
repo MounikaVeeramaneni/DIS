@@ -76,35 +76,41 @@ namespace Assignment1_Spring2021
                  * for the second row it is 3 spaces, 2 stars
                  * for the third row it is 2 spaces, 3 stars and so on.             
                  */
-
-                int lintCount = n - 1;
-                int i, j;
-                // For loop to handle the the number of rows to be reflected.
-                for (j = 1; j <= n; j++)
+                if (n >= 0)
                 {
-                 /*for loop to handle the spaces present in each row.
-                  * (here it is 1 till n-1 for the row1
-                  * 1 till n-2 for the row2
-                  * 1 till n-3 for the row3
-                  * which is handled using  lintCount--; for each iteration of rows)
-                  */
-                    for (i = 1; i <= lintCount; i++)
+                    int lintCount = n - 1;
+                    int i, j;
+                    // For loop to handle the the number of rows to be reflected.
+                    for (j = 1; j <= n; j++)
                     {
-                        Console.Write(" ");
+                        /*for loop to handle the spaces present in each row.
+                         * (here it is 1 till n-1 for the row1
+                         * 1 till n-2 for the row2
+                         * 1 till n-3 for the row3
+                         * which is handled using  lintCount--; for each iteration of rows)
+                         */
+                        for (i = 1; i <= lintCount; i++)
+                        {
+                            Console.Write(" ");
+                        }
+                        lintCount--;
+                        /*for loop to handle the * present in each row.
+                        * (here it is 1 till 2n-1 for the row1
+                        * 1 till 2n-1 for the row2
+                        * 1 till 2n-1 for the row3
+                        * which is handled using  i <= 2 * j - 1; for each iteration of rows)
+                        */
+                        for (i = 1; i <= 2 * j - 1; i++)
+                        {
+                            Console.Write("*");
+                        }
+                        //Adding a newline to seperate each row
+                        Console.WriteLine("");
                     }
-                    lintCount--;
-                    /*for loop to handle the * present in each row.
-                    * (here it is 1 till 2n-1 for the row1
-                    * 1 till 2n-1 for the row2
-                    * 1 till 2n-1 for the row3
-                    * which is handled using  i <= 2 * j - 1; for each iteration of rows)
-                    */
-                    for (i = 1; i <= 2 * j - 1; i++)
-                    {
-                        Console.Write("*");
-                    }
-                    //Adding a newline to seperate each row
-                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("Provided invalid number of rows");
                 }
             }
             catch (Exception)
@@ -133,19 +139,26 @@ namespace Assignment1_Spring2021
                  * If a and b are the last two corresponding digits,
                  * the next digit of the Pell series is 2b+a           
                  */
-                int i, a = 1, b = 0, c = 0;
-                //Printing the first digit 0
-                Console.Write(c);
-                //Adding a space seperation between each number of the pell series
-                Console.Write(" ");
-                for (i = 1; i < n2; i++)
+                if (n2 >= 0)
                 {
-                    c = 2 * b + a;
+                    int i, a = 1, b = 0, c = 0;
+                    //Printing the first digit 0
                     Console.Write(c);
-                    // Assigning a and b to the next set of digits to find the nth pell number
-                    a = b;
-                    b = c;
+                    //Adding a space seperation between each number of the pell series
                     Console.Write(" ");
+                    for (i = 1; i < n2; i++)
+                    {
+                        c = 2 * b + a;
+                        Console.Write(c);
+                        // Assigning a and b to the next set of digits to find the nth pell number
+                        a = b;
+                        b = c;
+                        Console.Write(" ");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Provided invalid number of series");
                 }
             }
             catch (Exception)
@@ -274,7 +287,7 @@ namespace Assignment1_Spring2021
                 */
                 HashSet<String> lobjUniqueEmails = new HashSet<String>();
                 foreach (String email in emails)
-                {  
+                {
                     //Removing the spaces if any provided in the input 
                     String lstrEmail = email.Replace(" ", "");
                     //Fetching the index of "@" to seperate the local name and domain name
